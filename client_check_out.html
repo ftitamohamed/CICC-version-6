@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+    
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+    
+        form {
+            background: #ffffff;
+            max-width: 400px;
+            width: 100%;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+    
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+    
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+            box-sizing: border-box;
+        }
+    
+        input:focus, select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 3px rgba(0, 123, 255, 0.25);
+        }
+    
+        button {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        button:hover {
+            background-color: #0056b3;
+        }
+    
+        #shippingDetails {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            form {
+                padding: 20px;
+            }
+    
+            h1 {
+                font-size: 20px;
+            }
+    
+            button {
+                font-size: 14px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <h2>Checkout Form</h2>
+    <form id="checkoutForm">
+       <!--  <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phone">Phone:</label><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br> -->
+
+        <label for="shipping">Shipping:</label><br>
+        <select id="shipping" name="shipping" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
+
+        <div id="shippingDetails" style="display: none;">
+            <label for="receiver_name">Receiver Name:</label><br>
+            <input type="text" id="receiver_name" name="receiver_name"><br><br>
+
+            <label for="address">Address:</label><br>
+            <input type="text" id="address" name="address"><br><br>
+
+            <label for="city">City:</label><br>
+            <input type="text" id="city" name="city"><br><br>
+
+            <label for="postal_code">Postal Code:</label><br>
+            <input type="text" id="postal_code" name="postal_code"><br><br>
+
+            <label for="country">Country:</label><br>
+            <input type="text" id="country" name="country"><br><br>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('checkoutForm');
+        const shippingSelect = document.getElementById('shipping');
+        const shippingDetails = document.getElementById('shippingDetails');
+
+        shippingSelect.addEventListener('change', () => {
+            if (shippingSelect.value === '1') {
+                shippingDetails.style.display = 'block';
+            } else {
+                shippingDetails.style.display = 'none';
+            }
+        });
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            const requestBody = {
+                cart: {
+                    orders: [
+                        {
+                            product_id: "7",
+                            product_name: "T-Shirt",
+                            color_id: "1",
+                            size_id: "1",
+                            quantity: 25,
+                            price_without_size_color_price: 200,
+                            price_for_size_color_price: 25,
+                            full_price: 225,
+                            front_image: "http://127.0.0.1:8000/storage/colors/2BUC20jPGhQYGbulKiQ8xxSzUP0qxvjFgFpw8sdq.jpg",
+                            back_image: "",
+                            logos: [
+                                "http://custmize.digitalgo.net/uploads/products/cmUVquz8oHfcsucWotDq0T3CHOlA2ejW4helyqwL.png",
+                                "http://custmize.digitalgo.net/uploads/products/cmUVquz8oHfcsucWotDq0T3CHOlA2ejW4helyqwL.png"
+                            ]
+                        }
+                    ]
+                },
+                subtotal: 225,
+                total_amount: 225,
+                discount: 0,
+                promocode: "",
+               /*  email: formData.get('email'),
+                phone: formData.get('phone'),
+                name: formData.get('name'), */
+                shipping: parseInt(formData.get('shipping')),
+            };
+
+            if (requestBody.shipping === 1) {
+                requestBody.receiver_name = formData.get('receiver_name');
+                requestBody.address = formData.get('address');
+                requestBody.city = formData.get('city');
+                requestBody.postal_code = formData.get('postal_code');
+                requestBody.country = formData.get('country');
+            }
+            const token = localStorage.getItem("accessToken");
+            try {
+                const response = await fetch('https://custmize.digitalgo.net/api/checkout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}` // Add the authorization header with the token
+                    },
+                    body: JSON.stringify(requestBody),
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    alert('Order submitted successfully!');
+                    console.log(result);
+                } else {
+                    alert('Failed to submit order.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the order.');
+            }
+        });
+    </script>
+</body>
+</html>
