@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Profile.css">
+    <script defer  src="tracker.js"></script>
+    <link rel="stylesheet" href="tracker.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <script defer src="visitor.js"></script>
+    
+          
+    <title>Vistor Orders</title>
+</head>
+<body>
+    <header>
+        <nav dir="rtl">
+            <img src="images/Logo.png" id="home-logo" alt="الشعار">
+            <div dir="ltr">
+                
+                <input type="text" placeholder="عم ماذا تبحث بالضبط؟">
+                <img src="images/icons8-search-500 (2).png" alt="بحث">
+            </div>
+            <div class="dropBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="links">
+                <a href="">عربي</a>
+               
+                <a href="login.html" id="loginLink" style="border:2px solid rgb(90, 128, 0); padding:8px;border-radius:5px;">
+                    <i class="fa-solid fa-user"></i> تسجيل الدخول
+                </a>
+                <a href="Cart.html" id="cart-link">
+                    <i class="fa-solid fa-cart-plus"> سلة التسوق</i>
+                    <div id="cart-count" class="cart-count"></div> <!-- Red dot container -->
+                </a>
+                
+                
+            </div>
+        </nav>
+    </header>
+    <main>
+        <aside>
+            <a  class="profile" href="login.html"> <i class="fa-solid fa-user"></i> Create Profile</a>
+            <a href="Cart.html"> <i class="fa-solid fa-cart-shopping"> </i> Cart</a>
+            <a  class="tracker-command" href="#"> <i class="fas fa-route"></i> Order Tracker</a>
+            
+            <a id="logoutLink" href="login.html">
+                <i class="fa-solid fa-right-from-bracket"></i> Login
+            </a>
+        </aside>
+        
+        <section class="settings">
+            
+           
+            <section class="tracker" style="display: flex;">
+                <section class="orders" style="display: block;">
+               
+                </section>
+                <div class="resume">
+                    
+                </div>
+              
+                
+            </section>
+        </section>
+        
+        
+    </main>
+</body>
+</html>

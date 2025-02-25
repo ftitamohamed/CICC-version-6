@@ -1,0 +1,13 @@
+I struggled to create a moving banner exactly when I tried to recreat the image-slider code and I learnt the following things ;
+
+---->  innerHtml is used to transfer a container like : divs , sections ,articles ...  content into another container means it won't work on elt like img/ buttons ...
+
+----> It is ultra-important to wrape your img inside div each  
+
+----> You have to creat a nodeList that will contains all the img : let gallery=querySelectorAll("div");
+
+----> If your nodeList contains img instead of divs you might use the following code to transfer content :
+i=0;
+btn.addEventListener('click',()=>{
+    plat.appendChild(gallery[i]);
+    i++;}
