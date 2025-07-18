@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="min.js"></script>
+    <script defer src="Home/home.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+    // Toggle visibility for signup password
+    const toggleSignupPassword = document.getElementById('toggleSignupPassword');
+    const signupPassword = document.getElementById('signupPassword');
+    toggleSignupPassword.addEventListener('click', function () {
+        if (signupPassword.type === 'password') {
+            signupPassword.type = 'text';
+            toggleSignupPassword.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            signupPassword.type = 'password';
+            toggleSignupPassword.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    });
+
+    // Toggle visibility for confirm password
+    const toggleSignupConfirmPassword = document.getElementById('toggleSignupConfirmPassword');
+    const signupConfirmPassword = document.getElementById('signupConfirmPassword');
+    toggleSignupConfirmPassword.addEventListener('click', function () {
+        if (signupConfirmPassword.type === 'password') {
+            signupConfirmPassword.type = 'text';
+            toggleSignupConfirmPassword.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            signupConfirmPassword.type = 'password';
+            toggleSignupConfirmPassword.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    });
+
+    // Toggle visibility for login password
+    const toggleLoginPassword = document.getElementById('toggleLoginPassword');
+    const loginPassword = document.getElementById('loginPassword');
+    toggleLoginPassword.addEventListener('click', function () {
+        if (loginPassword.type === 'password') {
+            loginPassword.type = 'text';
+            toggleLoginPassword.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            loginPassword.type = 'password';
+            toggleLoginPassword.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    });
+});
+
+	</script>
+</head>
+<header>
+    <div class="top-bar">
+        <p>لا تفوت أفضل العروض</p>
+        <div>
+            <i class="fa-solid fa-circle-info"></i>
+            <p>تحتاج إلى مساعدة؟</p>
+        </div>
+    </div>
+    <nav dir="rtl">
+        <img src="images/cadeau-logo.PNG" id="home-logo" alt="الشعار">
+        <div dir="ltr">
+            
+            <input type="text"  id="trackerCodeInput"  placeholder="عم ماذا تبحث بالضبط؟">
+            <img id="saveTrackerCodeButton" src="./images/icons8-search-500 (2).png" alt="بحث">
+        </div>
+        <div class="dropBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="links">
+            <a href="">عربي</a>
+           
+            <a href="login.html" id="loginLink" >
+                <i class="fa-solid fa-user"></i> تسجيل الدخول
+            </a>
+            <a href="Cart.html" id="cart-link">
+                <i class="fa-solid fa-cart-plus"> </i>سلة التسوق
+                
+                <div id="cart-count" class="cart-count"></div> <!-- Red dot container -->
+            </a>
+        </div>
+    </nav>
+    <div class="dropDown hide ">
+        <a href="">عربي</a>
+           
+        <a href="login.html" id="loginLink" style="border:2px solid #04cda3; padding:8px;border-radius:5px;">
+            <i class="fa-solid fa-user"></i> تسجيل الدخول
+        </a>
+        <a href="Cart.html" id="cart-link">
+            <i class="fa-solid fa-cart-plus"> سلة التسوق</i>
+            <div id="cart-count" class="cart-count"></div> <!-- Red dot container -->
+        </a>
+    </div>
+    <section class="second-nav">
+        <a href="" class="all">كل المنتجات</a>
+        <a href="">تيشرتات</a>
+        <a href="">التغليف والحقائب</a>
+        <a href="">كرات الكريستال</a>
+        <a href="">الهدايا</a>
+        <a href="">البطاقات</a>
+        <a href="">الأقلام</a>
+        <a href="">خدمات التصميم</a>
+    </section>
+    <section class="wrapper1">
+        <div class="slider">
+            <div class="slides" id="slides-container"></div>
+            <div class="navigation-auto" id="auto-navigation"></div>
+            <div class="navigation-manual" id="manual-navigation"></div>
+        </div>
+    </section>
+</header>
+
+<body>
+<div class="container" id="container" >
+    <div class="form-container sign-up-container" dir="rtl">
+        <form action="#">
+            <h1>إنشاء حساب</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            </div>
+            <span>أو استخدم بريدك الإلكتروني للتسجيل</span>
+            <input type="text" placeholder="إسم المستخدم" />
+            <input type="email" placeholder="البريد الإلكتروني " />
+            <input type="text" placeholder="رقم الهاتف " />
+            <div class="password-container">
+                <input type="password" id="signupPassword" placeholder="كلمة السر" />
+                <i class="fa fa-eye" id="toggleSignupPassword"></i>
+            </div>
+            <div class="password-container">
+                <input type="password" id="signupConfirmPassword" placeholder="تأكيد كلمة السر " />
+                <i class="fa fa-eye" id="toggleSignupConfirmPassword"></i>
+            </div>
+            <div id="loader" class="loader" style="display: none;"></div>
+            <button>إنشاء حساب</button>
+        </form>
+    </div>
+
+    <div class="form-container sign-in-container" dir="rtl">
+        <form action="#">
+            <h1>تسجيل الدخول </h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            </div>
+            <span>أو إستخدم معلومات الحساب</span>
+            <input type="email" placeholder="البريد الإلكتروني "/>
+            <div class="password-container">
+                <input type="password" id="loginPassword" placeholder="كلمة السر" />
+                <i class="fa fa-eye" id="toggleLoginPassword"></i>
+            </div>
+            <a href="Reset_Password.html">نسيت كلمة السر ؟</a>
+            <div id="loader" class="loader" style="display:none;"></div>
+            <button id="Login">تسجيل الدخول</button>
+        </form>
+    </div>
+
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <img src="images/cadeau-logo.PNG" id="home-logo" alt="logo">
+                <p>للبقاء على تواصل معنا، يرجى إدخال بياناتك و تسجيل الدخول</p>
+                <button class="ghost" id="signIn">تسجيل الدخول</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <img src="images/cadeau-logo.PNG" id="home-logo1" alt="logo">
+                <p>أدخل بياناتك وأبدأ رحلتك معنا   </p>
+                <button class="ghost" id="signUp">إنشاء حساب</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <footer>
+    <p>
+    </p>
+</footer> -->
+</body>
+<footer>
+    <div class="logo">
+        <img src="images/cadeau-gray-logo.PNG" alt="">
+    </div>
+    <div class="footerLinks">
+        <h4>
+            روابط سريعة
+        </h4>
+        <a href="#">الرئيسية</a>
+        <a href="#about">طلبك الأول؟ </a>
+        <a href="#Contact us">اتصل بنا</a>
+    </div>
+    
+    <div class="footerLinks">
+        <h4>
+            اتصل بنا
+        </h4>
+        <a href="">الموقع الرئيسي</a>
+        <a>البريد الإلكتروني</a>
+        <a >الهاتف</a>
+    </div>
+    <div class="footerLinks">
+        <h4>
+            حول
+        </h4>
+        <a href="">الشروط والأحكام</a>
+        <a href="">سياسة الخصوصية</a>
+    </div>
+    <div class="footerLinks">
+        <h4>
+            خدماتنا
+        </h4>
+        <a href="#services">المزيد</a>
+    </div>
+    <!-- New Input and Button -->
+    <!-- <div style=" margin-bottom: 10px; text-align: center; margin-left:-150px;">
+        <input type="text" placeholder="أدخل رمز التتبع" style="padding: 8px; width: 200px; border: 1px solid #ccc; border-radius: 5px;">
+        <button id="saveTrackerCodeButton" style="padding: 8px 16px; background-color: #5a8000; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            بحث
+        </button>
+    </div> -->
+</footer>
+<div class="end">
+    حقوق النشر &copy; جميع الحقوق محفوظة  
+</div>
+</html>
