@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Profile.css">
+    <link rel="stylesheet" href="visitor.css">
+    <script defer  src="tracker.js"></script>
+    <link rel="stylesheet" href="tracker.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+   <!--  <script defer src="visitor.js"></script> -->
+    <script defer  type="module"src="Loader.js"></script>
+   <script defer src="Home/ordersClientTracker.js"></script> 
+    <title>Tracking orders </title>
+</head>
+<body>
+    <header>
+        <nav dir="rtl">
+            <img src="images/dark-logo.PNG" id="home-logo" alt="الشعار">
+            <div dir="ltr">
+                
+                <input type="text"  id="trackerCodeInput"  placeholder="عم ماذا تبحث بالضبط؟">
+                <img id="saveTrackerCodeButton" src="images/icons8-search-500 (2).png" alt="بحث">
+            </div>
+            <div class="dropBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="links">
+                <a href="">عربي</a>
+                <a href="login.html" id="loginLink" >
+                    <i class="fa-solid fa-user"></i> Log in
+                </a>
+                
+                
+                <a href="Cart.html" id="cart-link">
+                    <i class="fa-solid fa-cart-plus"> </i>
+                    Shopping cart
+                    <div id="cart-count" class="cart-count"></div> <!-- Red dot container -->
+                </a>
+                <a href="#" id="toggleTracker" >
+                    <i class="fa-solid fa-user"></i> Tracker
+                </a>
+    
+            </div>
+        </nav>
+        <div class="dropDown hide ">
+            <a href="">عربي</a>
+               
+            <a href="login.html" id="loginLink" style="border:2px solid #04cda3; padding:8px;border-radius:5px;">
+                <i class="fa-solid fa-user"></i> Log in
+            </a>
+            <a href="Cart.html" id="cart-link">
+                <i class="fa-solid fa-cart-plus"> Shopping cart</i>
+                <div id="cart-count" class="cart-count"></div> <!-- Red dot container -->
+            </a>
+        </div>
+        
+    
+    <section class="trackerDropDown">
+    <div>
+    <input type="text" placeholder="Enter order tracker code here " />
+    
+    <img src="images/icons8-search-500 (2).png" alt="search tracker" />
+    </div>
+    </section>
+    </header>
+    <main>
+        <aside>
+            <a  class="profile" href="login.html"> <i class="fa-solid fa-user"></i> Create Profile</a>
+            <a href="Cart.html"> <i class="fa-solid fa-cart-shopping"> </i> Cart</a>
+            <a  class="tracker-command" href="index.html"> <i class="fas fa-route"></i> Home</a>
+            
+            <a id="logoutLink" href="login.html">
+                <i class="fa-solid fa-right-from-bracket"></i> Login
+            </a>
+        </aside>
+        
+        <section class="settings">
+            
+           
+            <section class="tracker" style="display: flex;">
+                <section class="orders" style="display: block;">
+               
+                </section>
+                <div class="resume">
+                    
+                </div>
+              
+                
+            </section>
+        </section>
+        
+        
+    </main>
+</body>
+</html>

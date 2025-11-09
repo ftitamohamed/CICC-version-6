@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="wearHouseSubCategories.css">
+    <link rel="stylesheet" href="bread-crumb.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="wearHouseSubCategories.js"></script>
+    <script defer src="Home/home.js"></script>
+    <script defer src="breadCrumb.js"></script>
+    <title>Document</title>
+</head>
+<header>
+    <nav dir="rtl">
+        <img src="images/dark-logo.PNG" id="home-logo" alt="الشعار">
+        <div dir="ltr">
+            
+            <input type="text"  id="trackerCodeInput"  placeholder="عم ماذا تبحث بالضبط؟">
+            <img id="saveTrackerCodeButton" src="images/icons8-search-500 (2).png" alt="بحث">
+        </div>
+        <div class="dropBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="links">
+            <a href="">عربي</a>
+           
+            <a href="login.html" id="loginLink" >
+                <i class="fa-solid fa-user"></i> Log in
+            </a>
+            <a href="Cart.html" id="cart-link">
+                <i class="fa-solid fa-cart-plus"> </i>
+                Shopping cart
+                <div id="cart-count" class="cart-count"></div> <!-- Red dot container -->
+            </a>
+            <a href="#" id="toggleTracker" >
+                <i class="fa-solid fa-user"></i> Tracker
+            </a>
+        </div>
+    </nav>
+    <div class="dropDown hide ">
+        <a href="">عربي</a>
+           
+        <a href="login.html" id="loginLink" style="border:2px solid #04cda3; padding:8px;border-radius:5px;">
+            <i class="fa-solid fa-user"></i> Log in
+        </a>
+        <a href="Cart.html" id="cart-link">
+            <i class="fa-solid fa-cart-plus"> Shopping cart</i>
+            <div id="cart-count" class="cart-count"></div> <!-- Red dot container -->
+        </a>
+    </div>
+    <section class="trackerDropDown">
+        <div>
+          <input type="text" placeholder="Enter order tracker code here " />
+          
+          <img src="images/icons8-search-500 (2).png" alt="search tracker" />
+        </div>
+      </section>
+</header>
+<body>
+    <h1>WearHouse</h1>
+    <ul id="breadcrumb" class="breadcrumb"></ul>
+    <main>
+        <div class="card">
+            <span class="price">
+                20.00 SAR
+            </span>
+            <img src="Logo.png" alt="">
+            <p class="title">Water Proof Bag</p>
+            <button>customize now </button>
+        </div>
+        <div class="card">
+            <span class="price">
+                20.00 SAR
+            </span>
+            <img src="Logo.png" alt="">
+            <p class="title">Water Proof Bag</p>
+            <button>customize now </button>
+        </div>
+        <div class="card">
+            <span class="price">
+                20.00 SAR
+            </span>
+            <img src="Logo.png" alt="">
+            <p class="title">Water Proof Bag</p>
+            <button>customize now </button>
+        </div>
+        <div class="card">
+            <span class="price">
+                20.00 SAR
+            </span>
+            <img src="Logo.png" alt="">
+            <p class="title">Water Proof Bag</p>
+            <button>customize now </button>
+        </div>
+        <div class="card">
+            <span class="price">
+                20.00 SAR
+            </span>
+            <img src="Logo.png" alt="">
+            <p class="title">Water Proof Bag</p>
+            <button>customize now </button>
+        </div>
+    </main>
+</body>
+</html>

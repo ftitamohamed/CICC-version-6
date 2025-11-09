@@ -1,0 +1,285 @@
+/* -------------------------------------------styling the steps--------------------------------------------- */
+/* body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #282c34;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+ */
+.countdown-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.circle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background:url("images/Logo.png"), linear-gradient(270deg, #CFDB27 -90.41%, #6fbc69c7 );
+    
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pulse 1.5s infinite;
+}
+
+.time {
+    position: relative;
+    z-index: 10;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 30px;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+.process{
+    width:100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    column-gap: 30px;
+    align-items: center;
+    margin: 30px 0;
+}
+.process .proc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;/* 
+    width:15%; */
+}
+.process .proc img{
+    width:90px;
+    height:60px;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: rgb(219, 219, 219);
+    opacity: 0.5;
+   /*  align-self: center; */
+}
+.process .proc:nth-child(1) img{
+    
+    background: #6FBC69 ;
+    opacity: 1;
+   /*  align-self: center; */
+}
+.process .proc i{
+    margin:20px 0;
+    font-size: 20px;
+    position: relative;
+    color: rgb(70, 70, 70);
+}
+.process .proc:nth-child(1) i{
+    margin:20px 0;
+    font-size: 20px;
+    position: relative;
+    color: rgb(3, 3, 3);
+    background:  #CFDB27 ;
+    border-radius: 50%;
+    
+}
+.process .proc:nth-child(1) i:after{
+    position:absolute;
+    content:"";
+    top:8px;
+    left:1;
+    width:330px;
+    height:4px;
+    background-color: rgb(161, 161, 161);
+}
+.process .proc:nth-child(2) i:after{
+    position:absolute;
+    content:"";
+    top:8px;
+    left:1;
+    width:330px;
+    height:4px;
+    background-color: rgb(161, 161, 161);
+}
+.process .proc p,h3{
+    margin: 2px 0;
+}
+.process .proc p{
+    width:70%;
+}
+section.tracker h1{
+    text-align: center;
+    font-size: 2.2rem;
+    margin: 50px 0px;
+}
+section.tracker{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap:15px;
+}
+/* General Styling */
+
+  
+ /* Order Card */
+.order-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 600px;
+    max-width: 620px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    left : -10%;
+    margin-bottom: 20px; /* Add space between orders */
+  }
+  
+  .order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Order Header (ID + Status) */
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+  }
+  .progress-tracker{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: pop;
+    flex-direction: column;
+  }
+  .order-number {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .order-status {
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-transform: capitalize;
+  }
+  
+  /* Status Colors */
+  .order-status[data-status="delivered"] {
+    background: #d4edda;
+    color: #155724;
+  }
+  
+  .order-status[data-status="pending"] {
+    background: #fff3cd;
+    color: #856404;
+  }
+  
+  .order-status[data-status="canceled"] {
+    background: #f8d7da;
+    color: #721c24;
+  }
+  
+  /* Order Info (Total Price) */
+  .order-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 12px;
+  }
+  
+  .total-price {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  /* Order Items */
+  .order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+  }
+  
+  .item-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .item-name {
+    font-size: 1em;
+    font-weight: 600;
+    flex-grow: 1;
+    color: #333;
+  }
+  
+  .item-quantity {
+    font-size: 0.95em;
+    color: #666;
+  }
+  
+  /* Empty Message */
+  .empty {
+    font-size: 1.2em;
+    color: #888;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .order-card {
+      width: 100%;
+      max-width: none;
+    }
+  
+    .order-info {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .item-image {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .item-name {
+      font-size: 0.95em;
+    }
+  
+    .item-quantity {
+      font-size: 0.9em;
+    }
+  }
+  
+  
+
+

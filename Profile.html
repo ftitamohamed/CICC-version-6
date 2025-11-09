@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Profile.css">
+    <link rel="stylesheet" href="bread-crumb.css">
+    <!-- <script defer  src="tracker.js"></script> -->
+    <link rel="stylesheet" href="tracker.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <script defer  src="dropDown.js"></script>
+    <script defer src="breadCrumb.js"></script>
+    <script defer type="module" src="Profile.js"></script>
+    <script defer type="module" src="Loader.js"></script>
+    <script defer>
+                async function getUserProfile() {
+  const token = localStorage.getItem('accessToken');
+
+  try {
+    const response = await fetch('https://custmize.digitalgo.net/api/myprofile', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    const data = await response.json();
+    console.log(data);
+    if (data.success) {
+      const profileData = data.data;
+      console.log(profileData);
+
+      document.getElementById('fname').value = profileData.name || '';
+      document.getElementById('lname').value = profileData.last_name || '';
+      document.getElementById('email').value = profileData.email || '';
+      document.getElementById('phone').value = profileData.phone || '';
+      document.getElementById('state').value = profileData.state || '';
+      document.getElementById('contry').value = profileData.country || '';
+
+      // Set DOB field if available
+      if (profileData.DOB) {
+        const formattedDate = new Date(profileData.DOB).toISOString().split('T')[0];
+        document.getElementById('Birthday').value = formattedDate;
+      }
+
+      // Set the gender radio button
+      if (profileData.gender != null) {
+        const genderRadio = document.querySelector(`input[name="gender"][value="${profileData.gender}"]`);
+        if (genderRadio) {
+          genderRadio.checked = true; // Check the correct radio button
+        }
+      }
+
+      // ... populate other fields if needed ...
+    } else {
+      console.error('Error fetching user profile:', data.message);
+      // Handle error, e.g., display an error message to the user
+    }
+  } catch (error) {
+    console.error('Error fetching user profile:', error);
+    // Handle network or other errors
+  }
+}
+
+// Call the function to fetch and populate the form
+getUserProfile();
+
+              </script>
+             
+              <script>
+                function handleFormSubmit(event) {
+                    event.preventDefault(); // Prevent form submission
+
+                    // Retrieve gender value
+                    const gender = document.querySelector('input[name="gender"]:checked')?.value || '';
+
+                    // Prepare profile data
+                    const profileData = {
+                        first_name: document.getElementById('fname').value || '',
+                        last_name: document.getElementById('lname').value || '',
+                        email: document.getElementById('email').value || '',
+                        phone: document.getElementById('phone').value || '',
+                        state: document.getElementById('state').value || '',
+                        country: document.getElementById('contry').value || '',
+                        gender: gender, // Include gender
+                        DOB: document.getElementById('Birthday').value || '', // Include date of birth
+                    };
+
+                    // Retrieve token
+                    const token = localStorage.getItem('accessToken');
+
+                    // Make API request
+                    fetch('https://custmize.digitalgo.net/api/update_profile', {
+                        method: 'POST',
+                        headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(profileData)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Handle successful update response
+                        console.log('Profile updated:', data);
+                        alert('Profile updated successfully!');
+                    })
+                    .catch(error => {
+                        // Handle errors
+                        console.error('Error updating profile:', error);
+                        alert('Failed to update profile. Please try again.');
+                    });
+                    }
+
+              </script>
+              <script defer src="Home/ordersClientTracker.js"></script>
+              <script defer src="Home/otp.js"></script>
+    <title>Profile</title>
+</head>
+<body>
+    <header>
+        <nav dir="rtl">
+            <img src="images/dark-logo.PNG" id="home-logo" alt="الشعار">
+            <div dir="ltr">
+                
+                <input type="text"  id="trackerCodeInput"  placeholder="What exactly are you looking for?">
+                <img id="saveTrackerCodeButton" src="images/icons8-search-500 (2).png" alt="بحث">
+            </div>
+            <div class="dropBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="links">
+                <a href="">عربي</a>
+               
+                <a href="login.html" id="loginLink" >
+                    <i class="fa-solid fa-user"></i> Log in
+                </a>
+                <a href="Cart.html" id="cart-link">
+                    <i class="fa-solid fa-cart-plus"> </i>
+                    Shopping cart
+                    <div id="cart-count" class="cart-count"></div> <!-- Red dot container -->
+                </a>
+                <a href="#" id="toggleTracker" >
+                    <i class="fa-solid fa-user"></i> Tracker
+                </a>
+            </div>
+        </nav>
+        <div class="dropDown hide ">
+            <a href="">عربي</a>
+               
+            <a href="login.html" id="loginLink" style="border:2px solid #04cda3; padding:8px;border-radius:5px;">
+                <i class="fa-solid fa-user"></i> Log in
+            </a>
+            <a href="Cart.html" id="cart-link">
+                <i class="fa-solid fa-cart-plus"> Shopping cart</i>
+                <div id="cart-count" class="cart-count"></div> <!-- Red dot container -->
+            </a>
+        </div>
+        <section class="trackerDropDown">
+            <div>
+              <input type="text" placeholder="Enter order tracker code here " />
+              
+              <img src="images/icons8-search-500 (2).png" alt="search tracker" />
+            </div>
+          </section>
+    </header>
+    <main>
+        <aside>
+            <a  class="profile"> <i class="fa-solid fa-user"></i> Profile</a>
+            <a href="Cart.html"> <i class="fa-solid fa-cart-shopping"> </i> Cart</a>
+            <a  class="tracker-command"> <i class="fas fa-route"></i> Order Tracker</a>
+            <!-- <a href=""> <i class="fa-solid fa-credit-card"> </i>Payments</a> -->
+            <a href="history.html"> <i class="fa fa-history" aria-hidden="true"> </i>History</a>
+            <a id="logoutLink" href="#">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+            <a onclick=showOTPDialog() class="otpButton" style = "display : none" id="verify"><i class="fa-regular fa-bookmark"></i>&nbsp; Verify account</a>
+        </aside>
+        
+        <section class="settings">
+            <ul id="breadcrumb" class="breadcrumb"></ul> 
+            <section class="offer"  >
+                <img src="images/customers/profile1_transparent.png" alt="">
+            
+                <div>
+                
+                    <h1>Personal Experience  
+                    </h1>
+                    <p>
+                        A complete profile tells us more about what you exactly prefers 
+                    </p>
+                    <div  class="bar">
+                        <span ></span>
+                        <span>30%</span>
+                    </div>
+                </div>
+                
+               </section>
+               
+            <form action="" >
+                
+             <div>
+                <label for="fname">First Name</label>
+                <input type="text" id="fname">
+             </div>
+            <div>
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname"> 
+            </div>
+            
+        
+            
+                <div>
+                <label for="email"> Email</label>
+                <input type="email" id="email">
+            </div> 
+
+            <div>
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone">
+            </div>
+            
+                
+                    <div>
+                <label for="state">State/Region</label>
+                <input type="text" id="state">
+            </div> 
+                
+                <div >
+                    <Label style="margin-left:5px"> Gender</Label style="margin-left:5px">
+                    <div class="radio-group">
+                    <label>
+                      <input type="radio" name="gender" value="male">
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="female">
+                        Female
+                    </label>
+                    </div>
+                </div>
+                <div>
+                    <label for="contry">Contry</label>
+                    <input type="text" id="contry">
+                </div>  
+                <div>
+                    <label for="Birthday">Birthday</label>
+                    <input type="date" id="Birthday">
+                </div>
+            
+            
+                <!-- <label for="serviceType">Type Of Service</label>
+                <select name="serviceType" id="serviceType">
+                    <option value="web-development">Web-development</option>
+                    <option value="mobile-development">Mobile-development</option>
+                    <option value="cloud-services">Cloud-services</option>
+                    <option value="cyber-security">Cyber-security</option>
+                </select>
+                <label for="message">Do you have any Message/Question?</label>
+                <input type="text" id="message"> -->
+            
+                <button type="submit" onclick=handleFormSubmit(event)> Update Profile</button> 
+            </form>
+            
+            <section class="tracker" style="display: none;">
+                <section class="orders" style="display: block;">
+               
+                </section>
+                <div class="resume">
+                    
+                </div>
+              
+                
+            </section>
+        </section>
+        
+        
+    </main>
+</body>
+</html>

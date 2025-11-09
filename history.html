@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Profile.css">
+    <link rel="stylesheet" href="visitor.css">
+    <script defer  src="history.js"></script>
+    <link rel="stylesheet" href="tracker.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+   <!--  <script defer src="visitor.js"></script> -->
+    
+   <script defer src="Home/ordersClientTracker.js"></script>
+   <!-- <script defer type='module'src="Profile.js"></script> -->
+   <script defer src="Home/otp.js"></script>
+   <script defer type="module" src="logout.js"></script>
+   <script defer src="Home/home.js"></script>
+    <title>History</title>
+    <style>
+        @media (min-width: 361px) and (max-width: 490px) {
+        body > main > aside{
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 100px;
+            height:12rem !important;
+            max-width:95vw;
+        }
+        body > main > section{
+            max-width:97vw;
+            margin-left:0;
+        }
+        body > main > section > section > section > p{
+            max-width:100% !important;
+        }
+    
+    }
+    </style>
+</head>
+<body>
+    <header>
+
+        <nav dir="rtl">
+            <img src="images/dark-logo.PNG" id="home-logo" alt="الشعار">
+            <div dir="ltr">
+                
+                <input type="text"  id="trackerCodeInput"  placeholder="عم ماذا تبحث بالضبط؟">
+                <img id="saveTrackerCodeButton" src="images/icons8-search-500 (2).png" alt="بحث">
+            </div>
+            <div class="dropBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="links">
+                <a href="">عربي</a>
+               
+                <a href="login.html" id="loginLink" style="border:2px solid #04cda3; padding:8px;border-radius:5px;">
+                    <i class="fa-solid fa-user"></i> تسجيل الدخول
+                </a>
+                <a href="Cart.html" id="cart-link">
+                    <i class="fa-solid fa-cart-plus"> سلة التسوق</i>
+                    <div id="cart-count" class="cart-count"></div> <!-- Red dot container -->
+                </a>
+                <a href="#" id="toggleTracker" >
+                    <i class="fa-solid fa-user"></i> Tracker
+                </a>
+                
+            </div>
+        </nav>
+        <div class="dropDown hide ">
+            <a href="">عربي</a>
+               
+            <a href="login.html" id="loginLink" style="border:2px solid #04cda3; padding:8px;border-radius:5px;">
+                <i class="fa-solid fa-user"></i> تسجيل الدخول
+            </a>
+            <a href="Cart.html" id="cart-link">
+                <i class="fa-solid fa-cart-plus"> سلة التسوق</i>
+                <div id="cart-count" class="cart-count"></div> <!-- Red dot container -->
+            </a>
+        </div>
+        <section class="trackerDropDown">
+            <div>
+              <input type="text" placeholder="Enter order tracker code here " />
+              
+              <img src="images/icons8-search-500 (2).png" alt="search tracker" />
+            </div>
+          </section>
+    </header>
+    <main>
+        <aside>
+            <a  class="profile" href="Profile.html"> <i class="fa-solid fa-user"></i> Profile</a>
+            <a href="Cart.html" href="Cart.html"> <i class="fa-solid fa-cart-shopping"> </i> Cart</a>
+            <!-- <a href=""> <i class="fa-solid fa-credit-card"> </i>Payments</a> -->
+            <a href="history.html"> <i class="fa fa-history" aria-hidden="true"> </i>History</a>
+            <a id="logoutLink" href="#">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+            <a onclick=showOTPDialog() class="otpButton" style = "display : none" id="verify"><i class="fa-regular fa-bookmark"></i>&nbsp; Verify account</a>
+           
+            
+            
+        </aside>
+        
+        <section class="settings">
+            
+           
+            <section class="tracker" style="display: flex;">
+                <section class="orders" style="display: block;">
+               
+                </section>
+                <div class="resume">
+                    
+                </div>
+              
+                
+            </section>
+        </section>
+        
+        
+    </main>
+</body>
+</html>
