@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="customize-CADEAU.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bread-crumb.css">
+    <script defer type="module" src="wearHouseCustomize.js"></script>
+    <script defer src="breadCrumb.js"></script>
+    <script defer  src="dropDown.js"></script>
+    <script defer  type="module" src="Loader.js"></script>
+    <script   src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.2.4/fabric.min.js"></script>
+    
+    
+    <!-- Include dom-to-image from CDN -->
+<script src="https://cdn.jsdelivr.net/npm/dom-to-image@2.6.0/dist/dom-to-image.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script defer  src="wearHouseCustomizeApiCalls.js"></script>
+
+       <script>
+        // For popup
+        function showPopup() {
+            const popup = document.getElementById("popup");
+            popup.style.display = "block";
+    
+            // Add event listener to close when clicking outside
+            document.addEventListener("click", outsideClickHandler);
+        }
+    
+        function outsideClickHandler(e) {
+            const popup = document.getElementById("popup");
+            if (popup.style.display === "block" && !popup.contains(e.target)) {
+                popup.style.display = "none";
+                document.removeEventListener("click", outsideClickHandler);
+            }
+        }
+    
+        function continueAsGuest() {
+            document.getElementById("popup").style.display = "none";
+            window.location.href = "Cart.html";
+        }
+    
+        function redirectToRegister() {
+            window.location.href = "login.html";
+        }
+        
+    </script>
+    
+    <script>
+        // For popup1
+        function showPopup1() {
+            
+            const popup1 = document.getElementById("popup1");
+            popup1.style.display = "block";
+            console.log('the function is triggered !')
+            // Add event listener to close when clicking outside
+            document.addEventListener("click", outsideClickHandler1);
+        }
+    
+        function outsideClickHandler1(e) {
+            const popup1 = document.getElementById("popup1");
+            if (popup1.style.display === "block" && !popup1.contains(e.target)) {
+                popup1.style.display = "none";
+                document.removeEventListener("click", outsideClickHandler1);
+            }
+        }
+    
+        function continueAsGuest1() {
+            window.location.href = "index.html";
+        }
+    
+        function redirectToRegister1() {
+            window.location.href = "Cart.html";
+        }
+    </script>
+
+    <script>
+        // For popup1
+        function showPopup2() {
+            const popup2 = document.getElementById("popup2");
+            popup2.style.display = "block";
+    
+            // Add event listener to close when clicking outside
+            document.addEventListener("click", outsideClickHandler2);
+        }
+    
+        function outsideClickHandler2() {
+            const popup2 = document.getElementById("popup2");
+            if (popup2.style.display === "block" ) {
+                popup2.style.display = "none";
+                document.removeEventListener("click", outsideClickHandler2);
+            }
+        }
+    
+        function continueAsGuest2() {
+            sessionStorage.setItem(`Front`, '');
+            sessionStorage.setItem(`Back`, '');
+            sessionStorage.setItem(`Left`, '');
+            sessionStorage.setItem(`Right`, '');
+            console.log('Just continue and remove logos !');
+            outsideClickHandler2()
+            console.log('Logos saved ');
+            setTimeout(()=>showPopup1(),500);
+        }
+    
+        function redirectToRegister2(e) {
+            outsideClickHandler2()
+            console.log('Logos saved ');
+            setTimeout(()=>showPopup1(),500);
+            
+        }
+    </script>
+    <script>
+        // For popup1
+        function showPopup3() {
+            const popup3 = document.getElementById("popup3");
+            popup3.style.display = "block";
+    
+            // Add event listener to close when clicking outside
+            document.addEventListener("click", outsideClickHandler3);
+        }
+    
+        function outsideClickHandler3() {
+            const popup3 = document.getElementById("popup3");
+            if (popup3.style.display === "block" ) {
+                popup3.style.display = "none";
+                document.removeEventListener("click", outsideClickHandler3);
+            }
+        }
+    
+        function continueAsGuest3() {
+            sessionStorage.setItem(`Front`, '');
+            sessionStorage.setItem(`Back`, '');
+            sessionStorage.setItem(`Left`, '');
+            sessionStorage.setItem(`Right`, '');
+            console.log('Just continue and remove logos !');
+            outsideClickHandler3()
+            console.log('Logos saved ');
+            setTimeout(()=>showPopup(),500);
+        }
+    
+        function redirectToRegister3(e) {
+            outsideClickHandler2()
+            console.log('Logos saved ');
+            setTimeout(()=>showPopup(),500);
+            
+        }
+    </script>
+    
+        <script defer src="Home/ordersClientTracker.js"></script>
+            
+        
+        <style>
+            #overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.6);
+                z-index: 9998;
+            }
+        
+            #enlarged-img-container {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+            }
+        
+            #enlarged-img-container img {
+                max-width: 90vw;
+                max-height: 90vh;
+                border: 4px solid white;
+                border-radius: 8px;
+                box-shadow: 0 0 20px rgba(0,0,0,0.7);
+            }
+        </style>
+        
+    <title>customize product</title>
+</head>
+<body>
+    <header>
+        <nav dir="ltr">
+            <img src="images/white green cadu logo.svg" id="home-logo" alt="الشعار">
+            <div dir="rtl">
+                
+                <input type="text"  id="trackerCodeInput"  placeholder="Search product">
+                <img id="saveTrackerCodeButton" src="images/icons8-search-500 (2).png" alt="بحث">
+            </div>
+            <div class="dropBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="links">
+                <a href="wearHouseAllCategories.html">All Categories</a>
+                
+                    
+                <a href="#" id="toggleTracker" >
+                    Tracker <i class="	fas fa-map-marker-alt"></i>
+                </a>
+                
+                <a href="Cart.html" id="cart-link">
+                    <img src="./images/icons8-buy-50.png" alt="" >
+                     Cart
+                    <div id="cart-count" class="cart-count"></div> <!-- Red dot container -->
+                </a>
+
+                 <a href="login.html" id="loginLink" >
+                        <div class="user">
+                            <img src="./images/icons8-user-48.png" alt="" >
+                            <div>
+                                <span>Log-in</span>
+                                <p>My Account</p>
+                            </div>
+                        </div>
+                </a>
+            
+        </nav>
+        <div class="dropDown hide ">
+            <!-- <a href="">عربي</a> -->
+             <!-- <a href="">عربي</a> -->
+             <a href="javascript:void(0)" id="toggleTracker2" >
+                Tracker <i class="	fas fa-map-marker-alt" style="color:cyan;"></i>
+            </a>
+               
+            
+        <a href="Cart.html" id="cart-link">
+            <img src="./images/icons8-buy-50.png" alt="" >
+            Cart
+            <div id="cart-count" class="cart-count"> </div> <!-- Red dot container -->
+            
+        </a>
+        <a href="login.html" id="loginLink" >
+            <div class="user">
+                <img src="./images/icons8-user-48.png" alt="" >
+                <div>
+                    <span>Log-in</span>
+                    <p>My Account</p>
+                </div>
+            </div>
+    </a>
+        <a href="wearHouseAllCategories.html">All Categories</a>
+        </div>
+        <section class="trackerDropDown">
+            <div>
+              <input type="text" placeholder="Enter order tracker code here " />
+              
+              <img src="images/icons8-search-500 (2).png" alt="search tracker" />
+            </div>
+          </section>
+        
+    </header>
+    <main>
+        <aside class="left-aside">
+            <h1 id="productName">CICC premium Hoodi /Cotton Heritage M2580</h1>
+            <h2 id="subCategoryName"></h2>
+            <div class="review" style="display:none;">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span> 4.6</span>
+            </div>
+
+            <h3 class="stock" style="display:none;">
+                13 products in stock
+            </h3>
+            <p style="display:none ;">
+                <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati similique, fugiat delectus vero cumque sit voluptas provident voluptatem sunt quo aperiam, labore velit, nisi sequi itaque et molestias.  -->
+            </p>
+            <h4> Delivery in </h4>
+            <button class="delivery">
+                4 - 9 october
+            </button>
+            <h4>Guiding pictures</h4>
+            <div class="slider-container" >
+                <button class="nav-button left-button" id="prevBtn">&#10094;</button>
+                <div class="image-slider" id="imageSlider">
+
+                    <!-- <img src="https://via.placeholder.com/300x200?text=Image+4" alt="Image 4">
+                    <img src="https://via.placeholder.com/300x200?text=Image+3" alt="Image 3">-->
+                    <img src="images/white t-shit.jpeg" alt="Image 4" > 
+                     <img src="images/t-shirt_Back-removebg-preview.png" alt="Image 1">
+                    <img src="images/t-shirt left.png" alt="Image 2">
+                    <img src="images/t-shirt right.png" alt="Image 3">
+                    <img src="images/white t-shit.jpeg" alt="Image 4" > 
+                     <img src="images/t-shirt_Back-removebg-preview.png" alt="Image 1">
+                </div>
+                <button class="nav-button right-button" id="nextBtn">&#10095;</button>
+            </div>
+            <img src="" alt="Guidness" id="guidness">
+            <h4>
+                Quantity
+            </h4>
+
+            <div class="counter">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+                <span class="count">5</span>
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+
+            <button class="add" id="saveBtn">Add to cart</button>
+            <button class="buy" id="buyNow"   >Buy now</button>
+           <!--  -->
+           
+            
+            <section class="Tracker" id="draggableDiv"> 
+                <div>
+                    <span>Unit Price</span>
+                    <span class="piecePrice">00</span>
+                </div>
+                <div >
+                    <span>Total Price</span>
+                    <span class="totalPrice"></span>
+                </div>
+            </section>
+        </aside>
+
+
+        <section class="product">
+            <div id="loader" style="display:none;">
+                <div class="spinner"></div>
+              </div>
+              
+            <ul id="breadcrumb" class="breadcrumb"></ul>
+            <div class="commands ">
+                <div class="toggelers">
+                    <p id="front">Front</p>
+                    <p id="back">Back</p>
+                    <p id="Right">Right</p>
+                    <p id="Left">Left</p>
+                   
+                </div>
+                <div class="popup" id="popup">
+                    <p>To continue purchasing as a guest, click "OK".<br>To continue purchasing as a customer, click "Register now !".</p>
+                    <button class="guest-btn" onclick="continueAsGuest()">OK</button>
+                    <button class="register-btn" onclick="redirectToRegister()">Register now </button>
+                </div>
+                <div class="popup" id="popup1">
+                    <p>"To complete your purchase, click "Buy Now."<br>"To add the product to your cart and continue shopping, click "Continue Shopping."</p>
+                    <button class="guest-btn" onclick="continueAsGuest1()">Continue shopping</button>
+                    <button class="register-btn" onclick="redirectToRegister1()">Buy Now</button>
+                </div>
+                <div class="popup" id="popup2">
+                    <p>"To save your logos , click "Save."<br>"To add the product to your cart and continue shopping, click "Continue Shopping."</p>
+                    <button class="guest-btn" onclick="continueAsGuest2()">Continue shopping</button>
+                    <button class="register-btn" onclick="redirectToRegister2()">Save</button>
+                </div>
+                <div class="popup" id="popup3">
+                    <p>"To save your logos , click "Save."<br>"To add the product to your cart and continue shopping, click "Continue Shopping."</p>
+                    <button class="guest-btn" onclick="continueAsGuest3()">Continue shopping</button>
+                    <button class="register-btn" onclick="redirectToRegister3()">Save</button>
+                </div>
+            <div class="btns">
+                    <button id="downloadBtn"  >Download</button>
+                    <button id="preview">Preview</button>    
+            </div>
+            </div>
+            
+            <div id="tools">
+                <div id="tshirt-div">
+                <img id="image"  alt="">
+                <div class="absoluteBox"><canvas id="canvas" position= "absolute"
+                    top= "0"
+                    left= "-10px !important"
+                    width= "500px"
+                    height= "350px" background-color= "aqua;"  ></canvas></div>
+                </div>
+                <section class="customizations">
+                    
+                    <ul class="colors">
+                      
+                    </ul>
+                    
+                    <ul class="Sizes">
+                       
+                    </ul>
+                    
+                    <ul class="material">
+                        <h4>Material</h4>
+                        <li id="material">Cotton</li>
+                        
+                        
+                    </ul>
+                </section>
+               
+         </div>
+        </section>
+        <aside class="right">
+            <h1>
+                Print options
+            </h1>
+            <label for="text">
+                Text
+            </label>
+            <br/>
+            <div class="editor" contenteditable="true" data-placeholder="" ></div>
+            <button id="addTextButton">Add Text</button>
+            <div class="toolbar">
+                <button id="boldButton" onclick="formatText('bold')" title="Bold (Ctrl+B)"><b>B</b></button>
+                <button id="italicButton" onclick="formatText('italic')" title="Italic (Ctrl+I)"><i>I</i></button>
+                <button id="underlineButton" onclick="formatText('underline')" title="Underline (Ctrl+U)"><u>U</u></button>
+               <!--  <select onchange="formatText('fontSize', this.value)" title="Font Size">
+                  <option value="3">Normal</option>
+                  <option value="1">Small</option>
+                  <option value="5">Large</option>
+                  <option value="7">Huge</option>
+                </select> -->
+                <input type="color" onchange="formatText('foreColor', this.value)" title="Text Color">
+                <select onchange="formatText('fontName', this.value)" title="Font Family" id="fontFamilyDropdown">
+                  <option value="Arial">Arial</option>
+                  <option value="Courier New">Courier New</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Times New Roman">Times New Roman</option>
+                  <option value="Verdana">Verdana</option>
+                </select>
+              </div>
+              
+              <!-- Contenteditable editor -->
+              <!-- <input type="text" id="textInput" placeholder="Enter text to add" /> -->
+              <!-- <input type="text" id="textInput" placeholder="Enter text to add" /> -->
+              <input type="file" id="imageInput" accept="image/*" style="display: none;"/>
+              
+              
+                    <div class="shirt-logo">
+                        <div class="upload"> 
+                            <button id="triggerButton">
+                                <img src="images/customers/sticky-note_11737499.png" alt="">
+                            </button>
+                            <button id="imgLibrary">
+                                <img src="images/customers/image_12649310.png" alt="">
+                            </button>
+                            <button id="deleteButton">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                           <!--  <button id="addTextButton">
+                                <i class="fa-solid fa-pen"></i>
+                            </button> -->
+                        </div>
+                        <div style="margin-top: 20px;" class="Logo_Library">
+                            <input type="text" id="searchQuery" placeholder="Enter search term" />
+                            <button id="fetchImages">Search</button>
+                        </div>
+                        <div class="album" id="albumModal">
+                            <!-- Album items -->
+                            <a href="#" class="album-item">
+                                <div style="background-image: url(./images/cadeau-gray-logo.PNG)">
+                                    <img crossorigin="anonymous" bgsrc="" src="">
+                                </div>
+                            </a>
+                            <a href="#" class="album-item">
+                                <div style="background-image: url(./images/cadeau-gray-logo.PNG)">
+                                    <img crossorigin="anonymous" bgsrc="" src="">
+                                </div>
+                            </a>
+                            <a href="#" class="album-item">
+                                <div style="background-image: url(./images/cadeau-gray-logo.PNG)">
+                                    <img crossorigin="anonymous" bgsrc="" src="">
+                                </div>
+                            </a>
+                            <a href="#" class="album-item">
+                                <div style="background-image: url(./images/cadeau-gray-logo.PNG)">
+                                    <img crossorigin="anonymous" bgsrc="" src="">
+                                </div>
+                            </a>
+                            <a href="#" class="album-item">
+                                <div style="background-image: url(./images/cadeau-gray-logo.PNG)">
+                                    <img crossorigin="anonymous" bgsrc="" src="">
+                                </div>
+                            </a>
+                            <a href="#" class="album-item">
+                                <div style="background-image: url(./images/cadeau-gray-logo.PNG)">
+                                    <img crossorigin="anonymous" bgsrc="" src="">
+                                </div>
+                            </a>
+                        </div>
+                       
+                        <!-- Input and Button for Search -->
+                       
+                        
+                        <!-- JavaScript -->
+                        <script>
+                            document.getElementById('fetchImages').addEventListener('click', async function () {
+                                const searchQuery = document.getElementById('searchQuery').value.trim();
+                        
+                                if (!searchQuery) {
+                                    alert('Please enter a search term!');
+                                    return;
+                                }
+                        
+                                const apiUrl = `https://dashboard.caduksa.com/api/libraray?search=${encodeURIComponent(searchQuery)}`;
+                                
+                                try {
+                                    const response = await fetch(apiUrl);
+                                    const data = await response.json();
+                                    console.log(data);
+                                    if (data.success && Array.isArray(data.data)) {
+                                        const images = data.data;
+                                        const albumItems = document.querySelectorAll('.album-item');
+                        
+                                        albumItems.forEach((item, index) => {
+                                            
+                                                const imgUrl = images[0];
+                                                const div = item.querySelector('div');
+                                                const img = item.querySelector('img');
+                        
+                                                item.href = imgUrl; // Set the link's href
+                                                div.style.backgroundImage = `url(${imgUrl})`; // Set the background image
+                                                img.setAttribute('bgsrc', imgUrl); // Update the bgsrc attribute
+                                            }
+                                        );
+                                    } else {
+                                        alert('No images found for the given search term.');
+                                    }
+                                } catch (error) {
+                                    console.error('Error fetching data:', error);
+                                    alert('An error occurred while fetching images.');
+                                }
+                            });
+                        </script>
+                         <script defer>
+                           const guidnessImg = document.getElementById("guidness");
+
+guidnessImg.addEventListener("click", () => {
+  if (!document.getElementById("preview-container")) {
+    // Create preview container (like earlier)
+    const previewContainer = document.createElement("div");
+    previewContainer.id = "preview-container";
+    previewContainer.className = "preview-container";
+    previewContainer.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border: 1px solid #ddd;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      max-width: 90vw;
+      max-height: 90vh;
+      overflow: auto;
+    `;
+
+    // Close button styled like before
+    const closeButton = document.createElement("button");
+    closeButton.innerHTML = "×";
+    closeButton.style.cssText = `
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: white ;
+          padding :0.2rem 0.5rem;
+          background:red;
+      cursor: pointer;
+    `;
+    closeButton.addEventListener("click", () => {
+      previewContainer.remove();
+      overlay.remove();
+    });
+
+    // Create overlay
+    const overlay = document.createElement("div");
+    overlay.id = "overlay";
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 999;
+    `;
+
+    overlay.addEventListener("click", () => {
+      previewContainer.remove();
+      overlay.remove();
+    });
+
+    // Enlarged image
+    const img = document.createElement("img");
+    img.src = guidnessImg.src;
+    img.alt = "Guidness Preview";
+    img.style.cssText = `
+      max-width: 500px;
+      max-height: 500px;
+      border-radius: 4px;
+      display: block;
+      margin: 0 auto;
+    `;
+
+    previewContainer.appendChild(closeButton);
+    previewContainer.appendChild(img);
+
+    document.body.appendChild(overlay);
+    document.body.appendChild(previewContainer);
+  }
+});
+
+                        </script>
+                        
+                        
+                    </div>
+                </div>
+                <button class="add" style="margin-top: 10px; display: none;"  >Save</button>
+                <button class="buy" style="margin-top: 10px; color:red; border: 1px solid red;display: none;" >Delete</button>
+        </aside>
+    </main>
+</body>
+<script  >
+    let dropDown = document.querySelector(".dropDown");
+let dropBtn = document.querySelector(".dropBtn");
+console.log('this is your drop down',dropDown);
+let spanList= document.querySelectorAll(".dropBtn span");
+dropBtn.addEventListener("click",()=>{
+    dropDown.style.display='flex';
+    dropDown.classList.toggle("hide");
+    dropBtn.classList.toggle('btnInv');
+     spanList.forEach((span)=>{
+        span.classList.toggle('spanInv');
+    }); 
+
+    console.log(spanList);
+  });
+
+window.addEventListener('resize', function() {
+    // Define the laptop viewport width threshold (1024px)
+    const laptopViewportWidth = 1024;
+
+    // Get the current window width
+    const windowWidth = window.innerWidth;
+
+    // Get the element you want to add the .hide class to
+   /*  const element = document.querySelector('.your-element'); */
+
+    // Add or remove the .hide class based on the window width
+    if (windowWidth > laptopViewportWidth) {
+        dropDown.classList.add('hide');
+    } 
+});
+
+
+const toggleBtn = document.getElementById("toggleTracker");
+const toggleBtn2 = document.getElementById("toggleTracker2");
+const tracker = document.querySelector(".trackerDropDown");
+
+toggleBtn2.addEventListener("click", () => {
+  tracker.classList.toggle("show1");
+  console.log('the button is clicked ! ',toggleBtn2);
+});
+toggleBtn.addEventListener("click", () => {
+  tracker.classList.toggle("show1");
+  console.log('the button is clicked ! ',toggleBtn);
+});
+
+</script>
+</html>
