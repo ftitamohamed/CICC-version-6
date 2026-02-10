@@ -1,0 +1,171 @@
+/* Extra Large Devices (Desktops) */
+
+
+/* For 412px width and 915px height */
+@media (min-width: 412px)  {
+    body{
+      overflow-x: hidden;
+    }
+    body > header > nav > div.links{
+      width:30%;
+      gap:5px;
+    }
+    .gallery{
+      overflow-x: hidden;
+    }
+    .container{
+      overflow-x: hidden;
+      
+    }
+    .panel > h3{
+      font-size: 1.2rem !important;
+    }
+    .panel{
+      width:8% !important;
+      background:green;
+      margin:5px;
+      height:50vh;
+      background-size:cover;
+      background-repeat:no-repeat;
+      background: white scroll no-repeat ;
+  
+    }
+    
+  .container:has(.panel:hover) .panel h3 {
+    opacity: 0;
+  }
+  
+  
+  .container:has(.panel:hover) .panel:hover h3 {
+    opacity: 1;
+  }
+  
+    .panel:hover{
+      flex: 20;
+      opacity: 1;
+    }
+    
+    
+    footer{
+     
+      grid-template-columns: 1fr   1fr !important ;
+      height:100%;
+  }
+    footer div {
+        margin-top:50px;
+    }
+    footer div:last-child{
+      display:none;
+    }
+    footer div:nth-child(3){
+      display:none;
+    }
+  
+   
+  }
+   
+  
+   @media (min-width: 768px)  {
+    .container{
+      overflow-x: hidden;
+      background:gold;
+    }
+  } 
+  
+  @media (min-width: 820px)  {
+    
+    .container{
+      overflow-x: hidden;
+      background:lightblue;
+    }
+  }
+  
+  @media (min-width: 912px)  {
+   
+    .container{
+      overflow-x: hidden;
+      background: lightcoral;
+    }
+    body{
+      overflow-x: hidden;
+    }
+    body > header > nav > div.links{
+      width:30%;
+      gap:5px;
+    }
+    .gallery{
+      overflow-x: hidden;
+    }
+    .container{
+      overflow-x: hidden;
+    }
+    .panel > h3{
+      font-size: 1.5rem;
+    }
+    
+  .container:has(.panel:hover) .panel h3 {
+    opacity: 0;
+  }
+  
+  
+  .container:has(.panel:hover) .panel:hover h3 {
+    opacity: 1;
+  }
+  
+    .panel:hover{
+      flex: 20;
+      opacity: 1;
+    }
+    
+    
+    footer {
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr ;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container{
+      overflow-x: hidden;
+      background:green;
+    }
+    .panel > h3{
+      font-size: 2rem;
+    }
+    .panel:hover{
+      flex: 7;
+      filter: grayscale(0);
+      
+  }
+    
+  }
+  body {
+    background-color: pink;
+  }
+ body  main{
+    max-width:100%;
+    height:auto;
+
+    grid-template-columns: 1fr 1fr !important;
+    background:green;
+  }
+  nav{
+    display: none;
+  }
+  .item{
+    width: auto !important;
+  }
+  .order-summary{
+    display: none;
+  }
+  .shopping-items{
+    width:100%;
+  }
+  body > main > div > section > div.item{
+    width:80% !important;
+  }
+  body > main > div > section > div.item > div{
+    width:80% !important;
+  }
+  .quality i{
+    top: -150%;
+  }

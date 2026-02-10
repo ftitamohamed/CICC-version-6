@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="wearHouseAllProducts.css">
+    <link rel="stylesheet" href="bread-crumb.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer type="module" src="wearHouseAllProducts.js"></script>
+    <script defer src="Home/home.js"></script>
+    <script defer src="breadCrumb.js"></script>
+    <title>Document</title>
+</head>
+<header>
+    <nav dir="ltr">
+        <img src="images/dark-logo.png" id="home-logo" alt="الشعار">
+        <div dir="rtl">
+            
+            <input type="text"  id="trackerCodeInput"  placeholder="Search product">
+            <img id="saveTrackerCodeButton" src="images/icons8-search-500 (2).png" alt="بحث">
+        </div>
+        <div class="dropBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="links">
+            <a href="wearHouseAllCategories.html">All Categories</a>
+            
+                
+            <a href="#" id="toggleTracker" >
+                Tracker <i class="	fas fa-map-marker-alt"></i>
+            </a>
+            
+            <a href="Cart.html" id="cart-link">
+                <img src="./images/icons8-buy-50.png" alt="" >
+                 Cart
+                <div id="cart-count" class="cart-count"></div> <!-- Red dot container -->
+            </a>
+
+             <a href="login.html" id="loginLink" >
+                    <div class="user">
+                        <img src="./images/icons8-user-48.png" alt="" >
+                        <div>
+                            <span>Log-in</span>
+                            <p>My Account</p>
+                        </div>
+                    </div>
+            </a>
+        
+    </nav>
+    <div class="dropDown hide ">
+         <!-- <a href="">عربي</a> -->
+         <a href="javascript:void(0)" id="toggleTracker2" >
+            Tracker <i class="	fas fa-map-marker-alt" style="color:cyan;"></i>
+        </a>
+           
+        
+    <a href="Cart.html" id="cart-link">
+        <img src="./images/icons8-buy-50.png" alt="" >
+        Cart
+        <div id="cart-count" class="cart-count"> </div> <!-- Red dot container -->
+        
+    </a>
+    <a href="login.html" id="loginLink" >
+        <div class="user">
+            <img src="./images/icons8-user-48.png" alt="" >
+            <div>
+                <span>Log-in</span>
+                <p>My Account</p>
+            </div>
+        </div>
+</a>
+    <a href="wearHouseAllCategories.html">All Categories</a>
+    </div>
+    <section class="trackerDropDown">
+        <div>
+          <input type="text" placeholder="Enter order tracker code here " />
+          
+          <img src="images/icons8-search-500 (2).png" alt="search tracker" />
+        </div>
+      </section>
+</header>
+<body>
+    <ul id="breadcrumb" class="breadcrumb"></ul>
+    <h1>All Products </h1>
+    
+    <main>
+       
+    </main>
+</body>
+</html>
