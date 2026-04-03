@@ -1,0 +1,41 @@
+.breadcrumb {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 10px 16px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    margin-left: 2%;
+    margin-right: 2%;
+    flex-wrap: wrap;
+    
+    align-self: flex-start; 
+    width: 100%;
+  }
+
+  .breadcrumb li + li::before {
+    content: "›";
+    padding: 0 8px;
+    color: #6c757d;
+    font-size:0.9rem;
+  }
+
+  .breadcrumb li a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 0.7rem;
+    text-align:left;font-size:0.9rem;
+  }
+
+  .breadcrumb li:last-child a {
+    color: #6c757d;
+    pointer-events: none;
+    text-align:left;font-size:0.9rem;
+  }
+  @media (min-width: 351px) and (max-width: 490px) {
+    .breadcrumb{
+      width:90%;
+      margin-left:0;
+
+    }
+  }
